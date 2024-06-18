@@ -20,7 +20,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build
+    - run: 
+        npm run build
+        echo "ls">>${{GITHUB_WORKSPACE}}
 
   deploy:
     needs: build
