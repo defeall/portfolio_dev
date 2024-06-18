@@ -23,7 +23,9 @@ jobs:
     - run: npm run build
     - name: Display the path
       shell: bash
-      run: echo $PATH
+      run: 
+        echo $PATH
+        ls
 
   deploy:
     needs: build
