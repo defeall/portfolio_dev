@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from "react";
-import { tokens } from "../theme";
-import { Box, Typography, useTheme, Grid } from "@mui/material";
-import ProjectCard from "./ProjectCard";
-import adminImg from "../assets/Admin Dashboard.jpg";
-import Project1Img from "../assets/portfolioPic.png";
-import Edify from "../assets/edify.png";
-import iChanakya from "../assets/iChanakya.png";
-import Lottie from "lottie-react";
-import robotAnimation from "../assets/RobotAnimation.json";
-import axios from 'axios';
+import React from "react";
+// import { tokens } from "../theme";
+// import { useTheme } from "@mui/material";
+// import { Box, Typography, useTheme, Grid } from "@mui/material";
+// import ProjectCard from "./ProjectCard";
+// import adminImg from "../assets/Admin Dashboard.jpg";
+// import Project1Img from "../assets/portfolioPic.png";
+// import Edify from "../assets/edify.png";
+// import iChanakya from "../assets/iChanakya.png";
+// import Lottie from "lottie-react";
+// import robotAnimation from "../assets/RobotAnimation.json";
+// import axios from 'axios';
 import DataFetcher from "./DataFetcher";
 
 // const projectDetails = [
@@ -129,10 +130,11 @@ import DataFetcher from "./DataFetcher";
 
 
 const Projects = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  // const theme = useTheme();
+  // const colors = tokens(theme.palette.mode);
   return (
-    <DataFetcher />
+    <div><DataFetcher /></div>
+    
     // <Box
     //   sx={{
     //     flexGrow: 1,
