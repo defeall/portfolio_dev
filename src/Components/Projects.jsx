@@ -133,7 +133,8 @@ const Projects = () => {
   // const theme = useTheme();
   // const colors = tokens(theme.palette.mode);
   return (
-    <DataFetcher />
+    <div><DataFetcher /></div>
+    
     // <Box
     //   sx={{
     //     flexGrow: 1,
