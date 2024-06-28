@@ -8,26 +8,26 @@ import {
   Button,
   Grid,
   Accordion,
-  AccordionDetails,
+  // AccordionDetails,
   AccordionSummary,
-  List,
-  ListItem,
-  ListItemText,
+  // List,
+  // ListItem,
+  // ListItemText,
   IconButton,
 } from "@mui/material";
-import { IoEye } from "react-icons/io5";
+// import { IoEye } from "react-icons/io5";
 import { IoCodeSlash } from "react-icons/io5";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { TbPoint } from "react-icons/tb";
+// import { TbPoint } from "react-icons/tb";
 
 const ProjectCard = ({
-  img,
+  // img,
   description,
   title,
   skills,
-  url,
+  // url,
   codeUrl,
-  keyPoints,
+  // keyPoints,
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -53,7 +53,7 @@ const ProjectCard = ({
             boxShadow: `4px 5px 6px ${colors.toggle[100]} , -4px -5px 6px ${colors.toggle[300]}`,
           }}
         >
-          <Box>
+          {/* <Box>
             <img
               src={img}
               alt="img"
@@ -61,7 +61,7 @@ const ProjectCard = ({
               height="70%"
               style={{ borderRadius: "10px", objectFit: "contain" }}
             />
-          </Box>
+          </Box> */}
           <Typography
             color={colors.blueAccent[400]}
             gutterBottom
@@ -80,7 +80,7 @@ const ProjectCard = ({
               alignItems: "center",
             }}
           >
-            <a
+            {/* <a
               href={url}
               target="_blank"
               rel="noreferrer"
@@ -108,7 +108,7 @@ const ProjectCard = ({
               >
                 View
               </Button>
-            </a>
+            </a> */}
             <a
               href={codeUrl}
               target="_blank"
@@ -207,7 +207,7 @@ const ProjectCard = ({
                   {description}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails>
+              {/* <AccordionDetails>
                 <List>
                   {keyPoints.map((keyPoint, index) => {
                     return (
@@ -240,7 +240,7 @@ const ProjectCard = ({
                     );
                   })}
                 </List>
-              </AccordionDetails>
+              </AccordionDetails> */}
             </Accordion>
           </Box>
         </Box>

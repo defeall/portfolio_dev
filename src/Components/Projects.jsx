@@ -1,16 +1,14 @@
-import React from "react";
-// import { tokens } from "../theme";
-// import { useTheme } from "@mui/material";
-// import { Box, Typography, useTheme, Grid } from "@mui/material";
-// import ProjectCard from "./ProjectCard";
+import React, {useState, useEffect} from "react";
+import { tokens } from "../theme";
+import { Box, Typography, useTheme, Grid } from "@mui/material";
+import ProjectCard from "./ProjectCard";
 // import adminImg from "../assets/Admin Dashboard.jpg";
 // import Project1Img from "../assets/portfolioPic.png";
 // import Edify from "../assets/edify.png";
 // import iChanakya from "../assets/iChanakya.png";
-// import Lottie from "lottie-react";
-// import robotAnimation from "../assets/RobotAnimation.json";
-// import axios from 'axios';
-import DataFetcher from "./DataFetcher";
+import Lottie from "lottie-react";
+import robotAnimation from "../assets/RobotAnimation.json";
+import axios from 'axios';
 
 // const projectDetails = [
 //   {
@@ -127,88 +125,117 @@ import DataFetcher from "./DataFetcher";
 //   },
 // ];
 
-
-
 const Projects = () => {
-  // const theme = useTheme();
-  // const colors = tokens(theme.palette.mode);
-  return (
-    <div><DataFetcher /></div>
-    
-    // <Box
-    //   sx={{
-    //     flexGrow: 1,
-    //   }}
-    //   display="flex"
-    //   justifyContent="center"
-    //   alignItems="center"
-    //   marginLeft="15px"
-    //   marginBottom="15px"
-    // >
-    //   <Grid container width="90%" height="100%" marginTop="10px">
-    //     <Grid item xs={12} md={12}>
-    //       <Grid container spacing={1} marginTop="20px">
-    //         <Grid item xs={12} md={9} marginTop="10px">
-    //           <Box>
-    //             <Typography
-    //               variant="h2"
-    //               sx={{
-    //                 color: colors.blueAccent[400],
-    //                 fontWeight: "500",
-    //                 marginBottom: "15px",
-    //               }}
-    //             >
-    //               Projects
-    //             </Typography>
-    //             <Typography
-    //               variant="h3"
-    //               sx={{
-    //                 color: colors.greenAccent[400],
-    //                 fontWeight: "500",
-    //                 marginBottom: "25px",
-    //               }}
-    //             >
-    //               "Explore, Engage, Elevate: Unveiling My Digital Odyssey in the
-    //               Project Gallery."
-    //             </Typography>
-    //           </Box>
-    //         </Grid>
-    //         <Grid item xs={12} md={3} marginTop="10px">
-    //           <Box
-    //             width="100%"
-    //             display="flex"
-    //             justifyContent="center"
-    //             alignItems="center"
-    //           >
-    //             <Lottie
-    //               animationData={robotAnimation}
-    //               style={{
-    //                 width: "200px",
-    //                 height: "200px",
-    //                 padding: "8px",
-    //               }}
-    //             />
-    //           </Box>
-    //         </Grid>
-    //       </Grid>
-    //       <Grid container spacing={2}>
-    //         {projectDetails.map((project) => (
-    //           <Box key={project.id}>
-    //             <ProjectCard
-    //               img={project.img}
-    //               title={project.title}
-    //               url={project.url}
-    //               codeUrl={project.codeUrl}
-    //               skills={project.skills}
-    //               description={project.description}
-    //               keyPoints={project.keyPoints}
-    //             />
-    //           </Box>
-    //         ))}
-    //       </Grid>
-    //     </Grid>
-    //   </Grid>
-    // </Box>
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const [projectDetails, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://kdaez5gm2h.execute-api.us-east-1.amazonaws.com/dev/rds-data-access?x-api-key=uGQKWTElPT70o60nCIQhX7qkLtIjeIPv2AiOGcZh');
+        
+        if (response.status === 200) {
+          const apiResponse = response.data;
+
+          // Convert the body to an array of dictionaries
+          const formattedBody = apiResponse.body.map(item => ({
+            id: item[0],
+            title: item[1],
+            codeUrl: item[2],
+            description: item[3],
+            skills: item[4].split(', ')
+            // keyPoints: item[5]
+          }));
+
+          setData(formattedBody);
+        } else {
+          console.error('Error fetching data: ', response.status);
+        }
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log("acss", projectDetails.length);
+  return ( 
+    <Box
+      sx={{
+        flexGrow: 1,
+      }}
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      marginLeft="15px"
+      marginBottom="15px"
+    >
+      <Grid container width="90%" height="100%" marginTop="10px">
+        <Grid item xs={12} md={12}>
+          <Grid container spacing={1} marginTop="20px">
+            <Grid item xs={12} md={9} marginTop="10px">
+              <Box>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    color: colors.blueAccent[400],
+                    fontWeight: "500",
+                    marginBottom: "15px",
+                  }}
+                >
+                  Projects
+                </Typography>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    color: colors.greenAccent[400],
+                    fontWeight: "500",
+                    marginBottom: "25px",
+                  }}
+                >
+                  "Explore, Engage, Elevate: Unveiling My Digital Odyssey in the
+                  Project Gallery."
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={3} marginTop="10px">
+              <Box
+                width="100%"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Lottie
+                  animationData={robotAnimation}
+                  style={{
+                    width: "200px",
+                    height: "200px",
+                    padding: "8px",
+                  }}
+                />
+              </Box>
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            {projectDetails.length>0 ? (projectDetails.map(project => (
+              <Box key={project.id}>
+                <ProjectCard
+                  // img={project.img}
+                  title={project.title}
+                  // url={project.url}
+                  codeUrl={project.codeUrl}
+                  skills={project.skills}
+                  description={project.description}
+                  // keyPoints={project.keyPoints}
+                />
+              </Box>
+            ))):(<p> Loading Data...</p>)}
+          </Grid>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
