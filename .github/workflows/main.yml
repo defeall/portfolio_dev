@@ -13,13 +13,14 @@ jobs:
         node-version: [18.x]
 
     steps:
+    - run: cd Frontend
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd Frontend
+    
     - run: npm ci
     - run: npm run build
     - uses: jakejarvis/s3-sync-action@master
