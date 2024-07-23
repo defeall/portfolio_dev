@@ -20,6 +20,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         # cache: 'npm'
     - run: cd Frontend
+    - run: ls
     - run: npm ci
     - run: npm run build
     - uses: jakejarvis/s3-sync-action@master
