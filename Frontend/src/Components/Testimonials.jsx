@@ -26,7 +26,7 @@ const Testimonials = () => {
       image: saurabhImage,
       name: "Saurabh Pandey",
       post: "Software Engineer",
-      companyName: "GlobalLogic - A Hitachi Group Company",
+      companyName: "GlobalLogic - A Hitachi Group Cossmpany",
       quote:
         "I've had the pleasure of closely working with Tushyap over the past 1.5 years, and it's been an exceptional experience. He is a standout professional, particularly in the realm of React development. Their proficiency in React is nothing short of impressive. He has consistently demonstrated a deep understanding of React's intricacies, and their ability to translate complex requirements into elegant and efficient React components is commendable. Beyond technical expertise, Tushyap is a reliable team player, seamlessly collaborating with cross-functional teams, providing valuable insights, and actively contributing to the success of our projects. Their positive attitude and willingness to go the extra mile make them a joy to work with.",
     },
