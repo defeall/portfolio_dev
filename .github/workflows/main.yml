@@ -21,7 +21,9 @@ jobs:
         # cache: 'npm'
     - run: cd Frontend
     - run: ls
-    - run: npm ci
+    - name: installing
+      working-directory: ./Frontend
+      run: npm ci
     - run: npm run build
     - uses: jakejarvis/s3-sync-action@master
       with:
